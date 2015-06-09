@@ -10,6 +10,9 @@ import org.elasticsearch.client.Client;
 import org.elasticsearch.index.query.QueryBuilders;
 import org.elasticsearch.search.SearchHit;
 
+import static org.elasticsearch.index.query.QueryBuilders.*;
+import static org.elasticsearch.index.query.FilterBuilders.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -27,21 +30,23 @@ public class ElasticPlayerSearchService implements ServerPlayerSearchService {
 
     @Override
     public List<PlayerSearch> search(String fullName) {
-        SearchResponse response = client.prepareSearch("clemble", "player").
-            setSearchType(SearchType.DFS_QUERY_THEN_FETCH).
-            setQuery(QueryBuilders.fuzzyQuery("fullName", fullName)).             // Query
+        // Step 1. Creating response
+        SearchResponse response = client.
+            prepareSearch("clemble").
+            setTypes("player").
+            setQuery(QueryBuilders.fuzzyQuery("fullName", fullName)).
             setFrom(0).
-            setSize(10).
+            setSize(30).
             execute().
             actionGet();
-
+        // Step 2. Creates player search
         List<PlayerSearch> playerSearches = new ArrayList<>();
         for(SearchHit hit: response.getHits().getHits()) {
             Map<String, Object> source = hit.sourceAsMap();
             PlayerSearch search = new PlayerSearch(source.get("player").toString(), source.get("fullName").toString());
             playerSearches.add(search);
         }
-
+        // Step 3.
         return playerSearches;
     }
 

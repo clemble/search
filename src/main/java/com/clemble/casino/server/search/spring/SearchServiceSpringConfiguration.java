@@ -8,6 +8,7 @@ import com.clemble.casino.server.spring.common.CommonSpringConfiguration;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
@@ -35,11 +36,9 @@ public class SearchServiceSpringConfiguration {
     }
 
     @Bean
-    public Client client() {
+    public Client client(@Value("${clemble.elasticsearch.host}") String host) {
         return new TransportClient().
-            addTransportAddress(
-                new InetSocketTransportAddress("host1", 9300)
-            );
+            addTransportAddress(new InetSocketTransportAddress(host, 9300));
     }
 
 }
