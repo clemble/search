@@ -18,7 +18,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(value = { CommonSpringConfiguration.class })
-public class SearchServiceSpringConfiguration {
+public class SearchSpringConfiguration {
 
     @Bean
     public PlayerSearchServiceController searchServiceController(ServerPlayerSearchService searchService){

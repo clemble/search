@@ -3,7 +3,7 @@ package com.clemble.casino.server.search;
 import com.clemble.casino.player.PlayerProfile;
 import com.clemble.casino.search.PlayerSearch;
 import com.clemble.casino.server.search.service.ServerPlayerSearchService;
-import com.clemble.casino.server.search.spring.SearchServiceSpringConfiguration;
+import com.clemble.casino.server.search.spring.SearchSpringConfiguration;
 import com.clemble.test.random.ObjectGenerator;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import static org.junit.Assert.*;
  * @author Anton Oparin (antono@clemble.com)
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = SearchServiceSpringConfiguration.class)
+@ContextConfiguration(classes = SearchSpringConfiguration.class)
 public class PlayerSearchServiceTest {
 
     @Autowired
