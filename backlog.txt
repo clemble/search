@@ -1,0 +1,6 @@
+Player search
+1. Search by nickname
+2. Take in account location, when searching for player
+3. Search by first letters
+4. Take in account popularity, when searching for player (Number of followers)
+5. Take in account proximity by other connections, when searching for player

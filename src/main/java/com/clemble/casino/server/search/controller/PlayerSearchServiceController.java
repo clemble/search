@@ -4,10 +4,8 @@ import com.clemble.casino.WebMapping;
 import com.clemble.casino.server.search.service.ServerPlayerSearchService;
 import com.clemble.casino.search.PlayerSearch;
 import com.clemble.casino.search.service.PlayerSearchService;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.mongodb.repository.Query;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,8 +25,8 @@ public class PlayerSearchServiceController implements PlayerSearchService {
 
     @Override
     @RequestMapping(method = RequestMethod.GET, value = SEARCH_PLAYER, produces = WebMapping.PRODUCES)
-    public List<PlayerSearch> search(@RequestBody String fullName) {
-        return delegate.search(fullName);
+    public List<PlayerSearch> search(@RequestParam("query") String query) {
+        return delegate.search(query);
     }
 
 }

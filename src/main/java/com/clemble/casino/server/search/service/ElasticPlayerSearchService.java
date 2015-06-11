@@ -39,6 +39,7 @@ public class ElasticPlayerSearchService implements ServerPlayerSearchService {
             setSize(30).
             execute().
             actionGet();
+
         // Step 2. Creates player search
         List<PlayerSearch> playerSearches = new ArrayList<>();
         for(SearchHit hit: response.getHits().getHits()) {

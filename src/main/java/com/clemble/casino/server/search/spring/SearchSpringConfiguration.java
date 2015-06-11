@@ -5,6 +5,7 @@ import com.clemble.casino.server.search.listener.SearchSystemPlayerProfileRegist
 import com.clemble.casino.server.search.service.ElasticPlayerSearchService;
 import com.clemble.casino.server.search.service.ServerPlayerSearchService;
 import com.clemble.casino.server.spring.common.CommonSpringConfiguration;
+import com.clemble.casino.server.spring.common.SpringConfiguration;
 import org.elasticsearch.client.Client;
 import org.elasticsearch.client.transport.TransportClient;
 import org.elasticsearch.common.transport.InetSocketTransportAddress;
@@ -18,7 +19,7 @@ import org.springframework.context.annotation.Import;
  */
 @Configuration
 @Import(value = { CommonSpringConfiguration.class })
-public class SearchSpringConfiguration {
+public class SearchSpringConfiguration implements SpringConfiguration {
 
     @Bean
     public PlayerSearchServiceController searchServiceController(ServerPlayerSearchService searchService){
