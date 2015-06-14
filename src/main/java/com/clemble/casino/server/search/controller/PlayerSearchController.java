@@ -15,11 +15,11 @@ import static com.clemble.casino.search.SearchWebMapping.SEARCH_PLAYER;
  * @author Anton Oparin (antono@clemble.com)
  */
 @RestController
-public class PlayerSearchServiceController implements PlayerSearchService {
+public class PlayerSearchController implements PlayerSearchService {
 
     final private ServerPlayerSearchService delegate;
 
-    public PlayerSearchServiceController(ServerPlayerSearchService delegate) {
+    public PlayerSearchController(ServerPlayerSearchService delegate) {
         this.delegate = delegate;
     }
 

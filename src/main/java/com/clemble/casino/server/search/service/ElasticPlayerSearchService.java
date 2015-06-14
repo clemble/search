@@ -36,7 +36,7 @@ public class ElasticPlayerSearchService implements ServerPlayerSearchService {
             setTypes("player").
             setQuery(QueryBuilders.fuzzyQuery("fullName", fullName)).
             setFrom(0).
-            setSize(30).
+            setSize(4).
             execute().
             actionGet();
 

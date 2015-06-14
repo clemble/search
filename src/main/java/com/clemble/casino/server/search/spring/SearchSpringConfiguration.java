@@ -1,6 +1,6 @@
 package com.clemble.casino.server.search.spring;
 
-import com.clemble.casino.server.search.controller.PlayerSearchServiceController;
+import com.clemble.casino.server.search.controller.PlayerSearchController;
 import com.clemble.casino.server.search.listener.SearchSystemPlayerProfileRegisteredEvent;
 import com.clemble.casino.server.search.service.ElasticPlayerSearchService;
 import com.clemble.casino.server.search.service.ServerPlayerSearchService;
@@ -22,8 +22,8 @@ import org.springframework.context.annotation.Import;
 public class SearchSpringConfiguration implements SpringConfiguration {
 
     @Bean
-    public PlayerSearchServiceController searchServiceController(ServerPlayerSearchService searchService){
-        return new PlayerSearchServiceController(searchService);
+    public PlayerSearchController searchServiceController(ServerPlayerSearchService searchService){
+        return new PlayerSearchController(searchService);
     }
 
     @Bean
