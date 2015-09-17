@@ -6,10 +6,9 @@ jdk:
 services:
     - rabbitmq
     - mongodb
-
-before_script:
-    - mkdir -p shippable/buildoutput
+    - elasticsearch
 
 after_script:
+    - mkdir -p shippable/buildoutput
     - cp ./target/search-*-SNAPSHOT.jar ./shippable/buildoutput/search.jar
 
